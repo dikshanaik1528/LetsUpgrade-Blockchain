@@ -1,0 +1,39 @@
+/*smart contract: report_card
+test deployment of the smart contract for report card can be found at 0x9Fc7Da2daAf8fFA7c21C9c51d76c79861578b537 in
+https://ropsten.etherscan.io/tx/0x3e9169279f37852249a1051a0b3e14a9625a68d57a91d7786e4558ab60f6abcc*/
+
+
+
+pragma solidity >= 0.4.17 < 0.7.0;
+
+contract ReportCard {
+    string public Name;
+    string public RollNo;
+    uint public batch;
+    int256 m1; int256 m2; int256 m3; int256 m4;
+    int256 per;
+    string status;
+    
+    function ReportCard(string newName, string newRollNo, uint newbatch, int256 newm1, int256 newm2, int256 newm3, int256 newm4, string newstatus) public{
+        Name = newName;
+        RollNo = newRollNo;
+        batch = newbatch;
+        m1 = newm1;
+        m2 = newm2;
+        m3 = newm3; 
+        m4 = newm4; 
+        status = newstatus;   
+    }
+    function getDetails() public view returns (string, string, uint, int256, int256, int256, int256,  string){
+               return(Name, RollNo, batch, m1, m2, m3, m4, status);
+    }
+       
+    function getPercentage() public view  returns (int256) {
+       per = (m1+m2+m3+m4)/4;
+        return per;
+    }
+     
+    
+  
+}
+
